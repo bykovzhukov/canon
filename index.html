@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <title>Базовый спецпроект</title>
+
+    <meta charset="utf-8">
+    <meta name="referrer" content="always">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Подключаем основной шрифт сайта на случай, если спецпроект будет не на отдельной странице -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,700&amp;subset=cyrillic-ext">
+
+    <!-- Подключаем стили сайта на тот же случай -->
+    <!-- ВАЖНО: в стилях сайта ПОЧТИ для всех элементов свойство box-sizing определено как border-box -->
+    <link rel="stylesheet" href="https://s38736.cdn.ngenix.net/static/build/vc.ru/all.min.css?9a6ff7a9">
+</head>
+
+<body>
+
+    <div class="Canon-wrapper">
+        <div id="canon-qa" class="Canon"></div>
+    </div>
+
+    <br><br><br>
+
+    <div class="Canon-wrapper">
+        <div id="canon-kern" class="Canon">
+            <div class="Canon__kern">
+                <img class="Canon__logo" src="images/va.jpg" srcset="images/va@2x.jpg 2x">
+                <div class="Canon__desc Canon__desc--kern">Выверенные расстояния между буквами — свойство хорошего шрифта. Попробуйте выставить правильные расстояния вручную, двигая буквы внутри слов.</div>
+                <div class="Canon__pages">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div class="Canon__string Canon-str">
+                    <div class="Canon-str__sample"></div>
+                    <div class="Canon-str__letters"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        (function(d, ver) {
+            var s = d.createElement('script');
+            s.src = './all.js?' + ver;
+            s.async = true;
+
+            var container1 = d.getElementById('canon-qa');
+            var container2 = d.getElementById('canon-kern');
+
+            if (container1 && container2) {
+                s.onload = function() {
+                    var test = new Special.QA({
+                        css: './all.css?' + ver,
+                        container: container1
+                    });
+
+                    var kern = new Special.Kern({
+                        container: container2
+                    });
+                };
+            }
+
+            d.body.appendChild(s);
+        })(document, 0);
+    </script>
+
+</body>
+
+</html>
