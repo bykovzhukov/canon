@@ -108,8 +108,6 @@ export default class Kern extends BaseSpecial {
       return offsetPer > 100 ? 100 : offsetPer;
     });
 
-    console.log(arr);
-
     return 100 - Math.round(arr.reduce((a, b) => a + b, 0) / arr.length);
   }
 
@@ -162,7 +160,6 @@ export default class Kern extends BaseSpecial {
   }
 
   restart() {
-    console.log('restart');
     this.activeIndex = 0;
     this.results = [];
 
