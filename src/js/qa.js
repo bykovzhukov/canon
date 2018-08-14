@@ -1,5 +1,3 @@
-import '../css/special.styl';
-
 import BaseSpecial from './base';
 import { makeElement, removeChildren } from './lib/dom';
 import { shuffle } from './lib/array';
@@ -21,11 +19,7 @@ export default class QA extends BaseSpecial {
       Object.assign(Data, params.data);
     }
 
-    if (this.params.css) {
-        this.loadStyles(this.params.css).then(() => this.init());
-    } else {
-        this.init();
-    }
+    this.init();
   }
 
   createElements() {

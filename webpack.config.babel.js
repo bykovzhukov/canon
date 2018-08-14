@@ -61,31 +61,54 @@ module.exports = (env, options) => {
         }
       }, {
         test: /\.styl$/,
-        use: inProd
-          ? [
-              MiniCssExtractPlugin.loader,
-              {
-                loader: 'css-loader',
-                options: {
-                  url: false,
-                  sourceMap: true
-                }
-              },
-              {
-                loader: 'postcss-loader',
-                options: {
-                  plugins: [autoprefixer()],
-                  sourceMap: true
-                }
-              },
-              {
-                loader: 'stylus-loader',
-                options: {
-                  sourceMap: true
-                }
-              }
-            ]
-          : ['style-loader', 'css-loader?url=false', 'stylus-loader']
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              url: false,
+              minimize: true,
+              // sourceMap: true
+            }
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: [autoprefixer()],
+              // sourceMap: true
+            }
+          },
+          {
+            loader: 'stylus-loader',
+            options: {
+              // sourceMap: true
+            }
+          }
+        ]
+          // inProd ? [
+            //   MiniCssExtractPlugin.loader,
+            //   {
+            //     loader: 'css-loader',
+            //     options: {
+            //       url: false,
+            //       sourceMap: true
+            //     }
+            //   },
+            //   {
+            //     loader: 'postcss-loader',
+            //     options: {
+            //       plugins: [autoprefixer()],
+            //       sourceMap: true
+            //     }
+            //   },
+            //   {
+            //     loader: 'stylus-loader',
+            //     options: {
+            //       sourceMap: true
+            //     }
+            //   }
+            // ]
+          // : ['style-loader', 'css-loader?url=false', 'stylus-loader']
       }]
     }
   }

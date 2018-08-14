@@ -1,8 +1,7 @@
-// import '../css/special.styl';
-
 import BaseSpecial from './base';
 import { makeElement, removeChildren } from './lib/dom';
 import { shuffle } from './lib/array';
+import makeDraggable from './lib/drag';
 import Data from './dataKern';
 import Svg from './svg';
 
@@ -55,6 +54,20 @@ export default class Kern extends BaseSpecial {
         click: 'continue'
       }
     });
+
+    EL.result = makeElement('div', CSS.main + '__result');
+    EL.rScore = makeElement('div', CSS.main + '__score');
+    EL.rScoreText = makeElement('div', CSS.main + '__score-text');
+    EL.rRestartBtn = makeElement('div', CSS.main + '__restart-btn', {
+      innerHTML: '<span>Пройти еще раз</span>' + Svg.refresh,
+      data: {
+        click: 'restart'
+      }
+    });
+
+    EL.result.appendChild(EL.rScore);
+    EL.result.appendChild(EL.rScoreText);
+    EL.result.appendChild(EL.rRestartBtn);
 
     EL.kern.appendChild(EL.logo);
     EL.kern.appendChild(EL.desc);
@@ -112,6 +125,7 @@ export default class Kern extends BaseSpecial {
     EL.string.classList.add(CSS.main + '-str');
     EL.string.classList.add(CSS.main + '-str--' + (this.activeIndex+1));
 
+    EL.lettersArr[this.activeIndex].dataset.draggable = true;
     this.lettersShift(EL.lettersArr[this.activeIndex]);
     EL.string.appendChild(EL.lettersArr[this.activeIndex]);
     EL.notice.textContent = q.notice;
@@ -121,8 +135,9 @@ export default class Kern extends BaseSpecial {
 
   compare() {
     let q = Data.questions[this.activeIndex];
-    
+
     this.results[this.activeIndex] = this.lettersCompare(EL.lettersArr[this.activeIndex]);
+    EL.lettersArr[this.activeIndex].dataset.draggable = '';
 
     EL.sSample.innerHTML = q.svg;
     EL.string.appendChild(EL.sSample);
@@ -142,9 +157,49 @@ export default class Kern extends BaseSpecial {
       EL.kern.appendChild(EL.notice);
       this.makeNextQuestion();
     } else {
-      console.log('result');
-      console.log(Math.round(this.results.reduce((a, b) => a + b, 0) / this.results.length));
+      this.makeResult();
     }
+  }
+
+  restart() {
+    console.log('restart');
+    this.activeIndex = 0;
+    this.results = [];
+
+    EL.kern.removeChild(EL.result);
+
+    EL.kern.appendChild(EL.pages);
+    EL.kern.appendChild(EL.string);
+    EL.kern.appendChild(EL.notice);
+    EL.kern.appendChild(EL.nextBtn);
+
+    this.makeNextQuestion();
+  }
+
+  getResultText(score) {
+    let text = '';
+    Data.results.some(item => {
+      if (item.range[0] <= score && item.range[1] >= score) {
+        text = item.text;
+        return true;
+      }
+    });
+
+    return text;
+  }
+
+  makeResult() {
+    EL.kern.removeChild(EL.pages);
+    EL.kern.removeChild(EL.string);
+    EL.kern.removeChild(EL.compare);
+    EL.kern.removeChild(EL.nextBtn);
+
+    let score = Math.round(this.results.reduce((a, b) => a + b, 0) / this.results.length);
+
+    EL.rScore.textContent = score + '%';
+    EL.rScoreText.textContent = this.getResultText(score);
+
+    EL.kern.appendChild(EL.result);
   }
 
   init() {
@@ -155,58 +210,6 @@ export default class Kern extends BaseSpecial {
     this.container.appendChild(EL.kern);
 
     this.makeNextQuestion();
-  }
-
-}
-
-
-function makeDraggable(el) {
-  var selectedElement, offset;
-  var svg = el.children[0];
-  el.addEventListener('mousedown', startDrag);
-  el.addEventListener('mousemove', drag);
-  el.addEventListener('mouseup', endDrag);
-  el.addEventListener('mouseleave', endDrag);
-
-  function startDrag(e) {
-    if (e.target.tagName === 'path'
-        && (e.target.previousSibling && e.target.nextSibling)
-    ) {
-        selectedElement = e.target;
-        offset = getMousePosition(e);
-
-        selectedElement.classList.add('is-dragged');
-        
-        if (selectedElement.getAttribute('data-x')) {
-          offset.x -= parseFloat(selectedElement.getAttribute('data-x'));
-        }
-    }
-  }
-
-  function drag(e) {
-    if (selectedElement) {
-      e.preventDefault();
-      var coord = getMousePosition(e),
-          x = coord.x - offset.x;
-          // x = Math.ceil(coord.x - offset.x);
-      selectedElement.setAttribute('transform', 'translate(' + x + ', 0)');
-      selectedElement.setAttribute('data-x', x);
-    }
-  }
-
-  function endDrag(e) {
-    if (selectedElement) {
-      selectedElement.classList.remove('is-dragged');
-      selectedElement = null;
-    }
-  }
-
-  function getMousePosition(e) {
-    var CTM = svg.getScreenCTM();
-    return {
-      x: (e.clientX - CTM.e) / CTM.a,
-      y: (e.clientY - CTM.f) / CTM.d
-    };
   }
 
 }
