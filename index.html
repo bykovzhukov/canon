@@ -22,24 +22,10 @@
         <div id="canon-qa" class="Canon"></div>
     </div>
 
-    <br><br><br>
+    <br><br>
 
     <div class="Canon-wrapper">
-        <div id="canon-kern" class="Canon">
-            <div class="Canon__kern">
-                <img class="Canon__logo" src="images/va.jpg" srcset="images/va@2x.jpg 2x">
-                <div class="Canon__desc Canon__desc--kern">Выверенные расстояния между буквами — свойство хорошего шрифта. Попробуйте выставить правильные расстояния вручную, двигая буквы внутри слов.</div>
-                <div class="Canon__pages">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
-                <div class="Canon__string Canon-str">
-                    <div class="Canon-str__sample"></div>
-                    <div class="Canon-str__letters"></div>
-                </div>
-            </div>
-        </div>
+        <div id="canon-kern" class="Canon"></div>
     </div>
 
 
@@ -55,7 +41,6 @@
             if (container1 && container2) {
                 s.onload = function() {
                     var test = new Special.QA({
-                        css: './all.css?' + ver,
                         container: container1
                     });
 
