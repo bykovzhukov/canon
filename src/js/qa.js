@@ -21,7 +21,11 @@ export default class QA extends BaseSpecial {
       Object.assign(Data, params.data);
     }
 
-    this.init();
+    if (this.params.css) {
+        this.loadStyles(this.params.css).then(() => this.init());
+    } else {
+        this.init();
+    }
   }
 
   createElements() {
