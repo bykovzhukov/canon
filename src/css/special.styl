@@ -1,6 +1,5 @@
-// Если спецпроект интегрирован в сайт, из media queries обычно хватает только двух: mobile и not_mobile
+@import 'fonts'
 @import 'mq'
-
 @import 'functions'
 @import 'keyframes'
 
@@ -11,59 +10,328 @@ $colors = {
     white: #ffffff,
     black: #000000
 }
+.Canon
+    position relative
+    min-height 540px
+    padding 40px 20px 50px
+    font-family 'Roboto', Tahoma
+    font-weight 400
+    background-color #000
+    overflow hidden
+    
+    &::after
+        content ''
+        position absolute
+        bottom 0
+        left 0
+        right 0
+        width 100%
+        height 90px
+        background-image url('images/bg.jpg')
+        background-size 104px 94px
 
-// FYI: на десктопе на странице статьи максимальная ширина контейнера — 1060px. В ленте сайта — 640px.
-// Мобильная версия начинается с 679px, и там ограничений по ширине нет
+    &-wrapper
+        width 1060px
+        max-width 100%
+        min-height 100vh
+        margin 0 auto
+        
+    &__qa
+        position relative
+        z-index 1
+        width 580px
+        max-width 100%
+        margin 0 auto
+    
+    &__logo
+        display block
+        margin 0 auto
+        
+    &__desc
+        width 380px
+        max-width 100%
+        margin 17px auto 0
+        color #fff
+        font-size 16px
+        font-weight 700
+        line-height 26px
+        text-align center
+        
+        &--kern
+            width 480px
+    
+    &__pages
+        display flex
+        justify-content center
+        align-items center
+        margin-top 10px
+        
+        & div
+            width 10px
+            height 10px
+            border-radius 100%
+            border 2px solid  #666
+            
+            &:not(:last-child)
+                margin-right 5px
+            
+            &.is-filled
+                background-color #666
+    
+    &__options
+        // display flex
+        // align-items flex-start
+        margin-top 25px
+        
+        @media $mq.not_mobile
+            display flex
+    
+    &__option
+        display flex
+        flex-direction column
+        justify-content center
+        width 100%
+        min-height 270px
+        padding 10px 20px 10px 29px
+        color #fff
+        border-radius 10px
+        border 1px solid  #333
+        background-color #000
+        user-select none
+        cursor pointer
 
-// Название класса рекомендуется выбирать так, чтобы точно не было конфликтов с существующими спецпроектами.
-// Обычно имени проекта достаточно
-.specialContainer
-    font-size: 16px
-    line-height: 1.5em
-    padding: 15px
-    border: 1px solid $colors.black
-    width: 100%
-    max-width: 600px
-    text-align: center
-    margin: auto
-    display: flex
-    flex-direction: column
-    align-items: center
-    justify-content: center
+        &.is-correct
+            color #00BE35
+            border-color #00BE35
+            opacity 1
+        
+        &.is-incorrect
+            color #FF4F4F
+            border-color #FF4F4F
+            opacity 1
+            
+        @media $mq.not_mobile
+            width calc(50% - 30px)
+            transition opacity .2s
 
-    @media $mq.not_mobile
-        font-size: 18px
-        padding: 50px
+            &:hover
+                opacity .6
+            
+            &:first-child
+                margin-right 60px
+    
+    &__option-sep
+        margin 20px 0
+        color #fff
+        font-size 14px
+        text-align center
+        
+        @media $mq.not_mobile
+            display none
+    
+    &__option-title
+        margin-bottom 10px
+        font-size 18px
+        font-weight 700
+        
+    &__option-text
+        font-size 14px
+    
+    &__result
+        margin-top 42px
+        text-align center
+    
+    &__score
+        color #FABF46
+        font-size 72px
+        font-weight 700
+    
+    &__score-text
+        margin-top 23px
+        color #999
+        font-size 18px
+        
+    &__restart-btn
+        position relative
+        display inline-block
+        margin-top 52px
+        padding-right 24px
+        color #fff
+        font-size 18px
+        cursor pointer
+        opacity .2
+        transition opacity .2s
+        
+        & svg
+            position absolute
+            top 1px
+            right 0
+            fill currentColor
+        
+        &:hover
+            opacity .8
+            
+    &__string
+        margin-top 20px
 
-    svg
-        display: block
-        fill: currentColor
+    &-str
+        position relative
 
-    // Для подобных элементов придется сбрасывать стили, если спецпроект не на отдельной странице
-    input,
-    button
-        box-sizing: border-box
-        display: block
-        width: 200px
-        padding: 10px
-        margin: 5px 0
+        & span
+            position absolute
+            left 0
+            right 0
+            width 500px
+            height 1px
+            margin 0 auto
+            background-color #333
+                
+        &::before
+        &::after
+            content ''
+            position absolute
+            left 0
+            right 0
+            width 500px
+            max-width 100%
+            height 2px
+            margin 0 auto
+            background-color #333
+            
+        &--1
+            
+            & span
+                display none
+            
+            &::before
+                top -2px
+            
+            &::after
+                bottom -2px
+        
+        &--2
+            
+            & span
+                top 31px
+            
+            &::before
+                top 5px
+            
+            &::after
+                bottom 24px
+        
+        &--3
+            
+            & span
+                top 21px
+            
+            &::before
+                top 2px
+            
+            &::after
+                bottom 22px
+        
+        &__sample
+            position absolute
+            z-index 1
+            top 0
+            left 0
+            right 0
+            width 100%
+            height 100%
+            color #EC3163
+            
+            & svg
+                width 100%
+                height 100%
+                fill currentColor
+        
+        &__letters
+            position relative
+            z-index 2
+            margin 0 auto
+            color #fff
+            user-select none
+            
+            & svg
+                position relative
+                z-index 1
+                width 100%
+                height 100%
+                fill currentColor
+                
+                & path.is-dragged
+                    position relative
+                    z-index 1
+                    fill #EC3163
+                
+                & path:not(:first-child):not(:last-child)
+                    cursor move
 
-    .likely
-        display: flex
+            &--1
+                height 86px
+            
+            &--2
+                height 117px
+            
+            &--3
+                height 101px
+    
+    &__notice
+        position absolute
+        z-index 1
+        bottom 140px
+        left 0
+        right 0
+        width 455px
+        max-width 100%
+        margin 0 auto
+        color #4C4C4C
+        font-size 16px
+        line-height 26px
+        text-align center
+        
+    &__compare
+        position absolute
+        z-index 1
+        bottom 170px
+        left 0
+        right 0
+        color #EC3163
+        font-size 36px
+        font-weight 700
+        text-align center
+        
+    &__next-btn
+        position absolute
+        z-index 1
+        bottom 50px
+        left 0
+        right 0
+        width 250px
+        max-width 100%
+        height 60px
+        margin 0 auto
+        color #fff
+        font-size 18px
+        border none
+        border-radius 5px
+        background-color #EC3163
+        cursor pointer
+        outline none
+        transition background-color .2s
+        
+        &:hover
+            color #EC3163
+            background-color #fff
 
-        &__widget
-            display: flex
-            align-items: center
-            justify-content: center
-            background-color: transparent
-            border: 1px solid
-            height: 40px
-            padding: 0 10px
-            margin: 0 2px
-            color: inherit
 
-        &__icon
-            background-color: transparent
 
-            svg
-                display: block
+
+
+
+
+
+
+
+

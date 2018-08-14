@@ -1,6 +1,8 @@
 /**
  * Entry point
  */
-import Special from './js/special';
+import QA from './js/qa';
+import Kern from './js/kern';
 
-module.exports.Special = Special; // Тут используется CommonJS модуль, чтобы можно было использовать название класса как глобальную переменную
+module.exports.QA = QA;
+module.exports.Kern = Kern;
