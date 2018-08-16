@@ -1,3 +1,5 @@
+import { animate } from './animate';
+
 export default function makeDraggable(el) {
   var selectedElement, offset;
   var svg = el.children[0];
@@ -13,18 +15,21 @@ export default function makeDraggable(el) {
   el.addEventListener('touchcancel', endDrag);
 
   function startDrag(e) {
-    if (e.target.tagName === 'path'
-        && (e.target.previousSibling && e.target.nextSibling)
-        && el.dataset.draggable
-    ) {
-        selectedElement = e.target;
-        offset = getMousePosition(e);
+    if (e.target.tagName === 'path' && el.dataset.draggable) {
 
-        selectedElement.classList.add('is-dragged');
-        
-        if (selectedElement.getAttribute('data-x')) {
-          offset.x -= parseFloat(selectedElement.getAttribute('data-x'));
-        }
+      if (!(e.target.previousSibling && e.target.nextSibling)) {
+        animate(e.target, 'shakeEffect', '800ms');
+        return;
+      }
+
+      selectedElement = e.target;
+      offset = getMousePosition(e);
+
+      selectedElement.classList.add('is-dragged');
+      
+      if (selectedElement.getAttribute('data-x')) {
+        offset.x -= parseFloat(selectedElement.getAttribute('data-x'));
+      }
     }
   }
 

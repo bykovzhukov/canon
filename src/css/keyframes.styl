@@ -1,0 +1,31 @@
+.animated {
+  animation-duration 400ms
+  animation-fill-mode both
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.fadeIn {
+  animation-name fadeIn
+}
+
+@keyframes shakeEffect {
+  from, to {
+    transform: translate3d(0, 0, 0);
+  }
+
+  10%, 30%, 50%, 70%, 90% {
+    transform: translate3d(-10px, 0, 0);
+  }
+
+  20%, 40%, 60%, 80% {
+    transform: translate3d(10px, 0, 0);
+  }
+}
+
+.shakeEffect {
+  animation-name: shakeEffect;
+}

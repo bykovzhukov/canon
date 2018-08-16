@@ -21,14 +21,14 @@ export default {
             titleStyle: 'font-family: PT Serif; line-height: 25px; margin-bottom: 15px;'
         }]
     }, {
-        title: 'Подойдёт для<br>офиса',
+        title: 'Подойдёт<br>для офиса',
         text: 'Компания Canon разработала пигментные черные и цветные чернила для больших объёмов печати.',
-        textStyle: 'font-family: Fira Sans; line-height: 24px;',
+        textStyle: 'font-family: Lucida Console; line-height: 19px;',
         options: [{
-            titleStyle: 'font-family: Courier New; line-height: 24px; margin-bottom: 11px',
+            titleStyle: 'font-family: Lora; line-height: 24px; margin-bottom: 11px',
             isCorrect: true
         }, {
-            titleStyle: 'font-family: Arial; line-height: normal; margin-bottom: 15px;'
+            titleStyle: 'font-family: Impact; line-height: normal; margin-bottom: 15px;'
         }]
     }],
     results: [

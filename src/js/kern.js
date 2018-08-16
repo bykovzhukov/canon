@@ -1,6 +1,7 @@
 import BaseSpecial from './base';
 import { makeElement, removeChildren } from './lib/dom';
 import { shuffle } from './lib/array';
+import { animate, requestAnimate } from './lib/animate';
 import makeDraggable from './lib/drag';
 import Data from './dataKern';
 import Svg from './svg';
@@ -132,16 +133,29 @@ export default class Kern extends BaseSpecial {
   }
 
   compare() {
-    let q = Data.questions[this.activeIndex];
+    let q = Data.questions[this.activeIndex],
+        score = 0;
 
-    this.results[this.activeIndex] = this.lettersCompare(EL.lettersArr[this.activeIndex]);
+    score = this.lettersCompare(EL.lettersArr[this.activeIndex]);
+
+    this.results[this.activeIndex] = score;
     EL.lettersArr[this.activeIndex].dataset.draggable = '';
 
     EL.sSample.innerHTML = q.svg;
     EL.string.appendChild(EL.sSample);
+    animate(EL.sSample, 'fadeIn', '800ms');
 
     EL.kern.removeChild(EL.notice);
-    EL.compare.textContent = this.results[this.activeIndex] + '%';
+
+    requestAnimate({
+      duration: score*10,
+      timing: timeFraction => timeFraction,
+      draw: progress => {
+        let n = Math.ceil(score * progress);
+        EL.compare.textContent = n + '%';
+      }
+    });
+
     EL.kern.appendChild(EL.compare);
 
     EL.nextBtn.dataset.click = 'continue';
@@ -193,7 +207,26 @@ export default class Kern extends BaseSpecial {
 
     let score = Math.round(this.results.reduce((a, b) => a + b, 0) / this.results.length);
 
-    EL.rScore.textContent = score + '%';
+    // requestAnimate({
+    //   duration: 1000,
+    //   timing: timeFraction => timeFraction,
+    //   draw: progress => {
+    //     console.log(progress);
+
+    //     EL.rScore.textContent = score + '%';
+    //   }
+    // });
+
+    requestAnimate({
+      duration: score*10,
+      timing: timeFraction => timeFraction,
+      draw: progress => {
+        let n = Math.ceil(score * progress);
+        EL.rScore.textContent = n + '%';
+      }
+    });
+
+    // EL.rScore.textContent = score + '%';
     EL.rScoreText.textContent = this.getResultText(score);
 
     EL.kern.appendChild(EL.result);
