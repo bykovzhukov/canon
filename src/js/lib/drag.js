@@ -36,11 +36,10 @@ export default function makeDraggable(el) {
   function drag(e) {
     if (selectedElement) {
       e.preventDefault();
+      if (e.touches) { e = e.touches[0]; }
       var wrap = el.getBoundingClientRect(),
           coord = getMousePosition(e),
           x = coord.x - offset.x;
-
-      console.log(e.clientX, el.getBoundingClientRect());
 
       if (e.clientX >= wrap.x && e.clientX <= (wrap.x + wrap.width)) {
         selectedElement.setAttribute('transform', 'translate(' + x + ', 0)');

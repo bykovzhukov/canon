@@ -16,6 +16,7 @@ $colors = {
     padding 40px 20px 50px
     font-family 'Roboto', Tahoma
     font-weight 400
+    text-size-adjust 100%
     background-color #000
     overflow hidden
     
@@ -169,6 +170,10 @@ $colors = {
         opacity .2
         transition opacity .2s
         
+        & span
+            display block
+            line-height 1
+        
         & svg
             position absolute
             top 1px
@@ -230,13 +235,13 @@ $colors = {
                 
             @media $mq.not_mobile
                 & span
-                    top 31px
+                    top 29px
                 
                 &::before
                     top 5px
                 
                 &::after
-                    bottom 24px
+                    bottom 22px
         
         &--3
             
@@ -328,23 +333,23 @@ $colors = {
             
             &--2
                 width 280px
-                height 69px
+                height 60px
                 
                 &::before
-                    left 18px
+                    left 15px
                 
                 &::after
-                    right 14px
+                    right 12px
                 
                 @media $mq.not_mobile
-                    width 476px
-                    height 117px
+                    width 500px
+                    height 106px
                     
                     &::before
-                        left 35px
+                        left 31px
                     
                     &::after
-                        right 30px
+                        right 27px
             
             &--3
                 width 280px
