@@ -274,9 +274,21 @@ $colors = {
         &__letters
             position relative
             z-index 2
+            max-width 100%
             margin 0 auto
             color #fff
             user-select none
+            
+            &::before
+            &::after
+                content ''
+                position absolute
+                bottom 101%
+                bottom calc(100% + 8px)
+                width 12px
+                height 15px
+                background-image url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABcAAAAeCAYAAADHJYVoAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAGiSURBVHgB1VbtccIwDFVCBmAEb1AKDBA2YIPCBKUTACMwQWECukHT/8B5hIzAAiR9ImlO8eVDXMlxvDsnZ0V6kWVZskcNGABBELylaRpiajD6GGcMC9nudDptm+y9GtK+7/tLz/MW1IwYOvPD4RCpyJkY3n7DswHpMTsejztX6LuCXq+3ryG2GBG+nSu+bcfjcegKS54Ph8MZlvnp6Gwul8vKWnuWenhx2IzQi6H3KvVKnkN56czXWO5CGjB4I5MkmWAVsRAb7NNU6hXkiHVIWUZcwYbYqBXVAD+MQTZ3nKkmh6Ib5w21IM8SuaqXSnLKcpjEzyzpIPVMHfnd0Sm5NxqN9pSFxJBYFjbH1uS0iwGVQxrxg8tDgPe0yuLGEyoR5u+f543548n5tGLMsckTTHekRKBR4jrCxz2fRsgwzqL3NjuN55EgLmSkgIbcuAKEqK+w05GjfhftDtXTuKX5P+R8WkMx/TvN9yF3mkJMSmjzvKgxeVfS1Jzbyfl2oLS5VsWUOgBCuX7u2hJRB+Bm4+Miw9cDbTNuBXcvEH/gvvP1C5Jzpf6KeOFbAAAAAElFTkSuQmCC')
+                background-size cover
             
             & svg
                 position relative
@@ -284,6 +296,7 @@ $colors = {
                 width 100%
                 height 100%
                 fill currentColor
+                overflow visible
                 
                 & path.is-dragged
                     position relative
@@ -294,22 +307,64 @@ $colors = {
                     cursor move
 
             &--1
+                width 281px
                 height 65px
                 
+                &::before
+                    left 16px
+                
+                &::after
+                    right 25px
+
                 @media $mq.not_mobile
+                    width 372px
                     height 86px
+                    
+                    &::before
+                        left 21px
+                    
+                    &::after
+                        right 35px
             
             &--2
+                width 280px
                 height 69px
                 
-                @media $mq.not_mobile
-                    height 117px
-            
-            &--3
-                height 57px
+                &::before
+                    left 18px
+                
+                &::after
+                    right 14px
                 
                 @media $mq.not_mobile
+                    width 476px
+                    height 117px
+                    
+                    &::before
+                        left 35px
+                    
+                    &::after
+                        right 30px
+            
+            &--3
+                width 280px
+                height 57px
+                
+                &::before
+                    left 13px
+                
+                &::after
+                    right 15px
+                
+                @media $mq.not_mobile
+                    width 502px
                     height 101px
+                    
+                    &::before
+                        left 27px
+                    
+                    &::after
+                        right 32px
     
     &__notice
         position relative
