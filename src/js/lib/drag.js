@@ -36,11 +36,16 @@ export default function makeDraggable(el) {
   function drag(e) {
     if (selectedElement) {
       e.preventDefault();
-      var coord = getMousePosition(e),
+      var wrap = el.getBoundingClientRect(),
+          coord = getMousePosition(e),
           x = coord.x - offset.x;
 
-      selectedElement.setAttribute('transform', 'translate(' + x + ', 0)');
-      selectedElement.setAttribute('data-x', x);
+      console.log(e.clientX, el.getBoundingClientRect());
+
+      if (e.clientX >= wrap.x && e.clientX <= (wrap.x + wrap.width)) {
+        selectedElement.setAttribute('transform', 'translate(' + x + ', 0)');
+        selectedElement.setAttribute('data-x', x);
+      }
     }
   }
 
