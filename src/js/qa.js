@@ -1,5 +1,6 @@
 import BaseSpecial from './base';
 import { makeElement, removeChildren } from './lib/dom';
+import * as Share from './lib/share';
 import { shuffle } from './lib/array';
 import Data from './dataQA';
 import Svg from './svg';
@@ -24,9 +25,8 @@ export default class QA extends BaseSpecial {
 
   createElements() {
     EL.qa = makeElement('div', CSS.main + '__qa');
-    EL.logo = makeElement('img', CSS.main + '__logo', {
-      src: 'images/ab.jpg',
-      srcset: 'images/ab@2x.jpg 2x'
+    EL.logo = makeElement('div', CSS.main + '__logo', {
+      innerHTML: Svg.test
     });
     EL.desc = makeElement('div', CSS.main + '__desc', {
       textContent: Data.description,
@@ -47,10 +47,12 @@ export default class QA extends BaseSpecial {
     EL.optionsArr.push(EL.option1);
     EL.optionsArr.push(EL.option2);
 
-    EL.result = makeElement('div', CSS.main + '__result');
+    EL.result = makeElement('div', [CSS.main + '__result', CSS.main + '__result--kern']);
     EL.rScore = makeElement('div', CSS.main + '__score');
-    EL.rScoreText = makeElement('div', CSS.main + '__score-text');
-    EL.rRestartBtn = makeElement('div', CSS.main + '__restart-btn', {
+    EL.rScoreTitle = makeElement('div', CSS.main + '__score-title');
+    EL.rScoreText = makeElement('div', [CSS.main + '__score-text', CSS.main + '__score-text--white']);
+    EL.rShare = makeElement('div', [CSS.main + '__share', CSS.main + '__share--kern']);
+    EL.rRestartBtn = makeElement('div', [CSS.main + '__restart-btn', CSS.main + '__restart-btn--kern'], {
       innerHTML: '<span>Пройти еще раз</span>' + Svg.refresh,
       data: {
         click: 'restart'
@@ -58,7 +60,9 @@ export default class QA extends BaseSpecial {
     });
 
     EL.result.appendChild(EL.rScore);
+    EL.result.appendChild(EL.rScoreTitle);
     EL.result.appendChild(EL.rScoreText);
+    EL.result.appendChild(EL.rShare);
     EL.result.appendChild(EL.rRestartBtn);
 
     EL.options.appendChild(EL.option1);
@@ -123,13 +127,22 @@ export default class QA extends BaseSpecial {
   }
 
   makeResult() {
+    EL.qa.removeChild(EL.desc);
     EL.qa.removeChild(EL.pages);
     EL.qa.removeChild(EL.options);
 
-    EL.rScore.textContent = this.correctAnswers + '/' + Data.questions.length;
-    EL.rScoreText.textContent = Data.results[this.correctAnswers];
+    EL.rScore.innerHTML = this.correctAnswers + '/' + Data.questions.length;
+    EL.rScoreTitle.innerHTML = 'Мой уровень:<br>' + Data.results[this.correctAnswers].level;
+    EL.rScoreText.innerHTML = Data.results[this.correctAnswers].text;
 
     EL.qa.appendChild(EL.result);
+
+    removeChildren(EL.rShare);
+    Share.make(EL.rShare, {
+      url: this.params.share.url + this.correctAnswers,
+      title: this.params.share.title,
+      twitter: this.params.share.title
+    });
   }
 
   restart() {
@@ -138,6 +151,7 @@ export default class QA extends BaseSpecial {
 
     EL.qa.removeChild(EL.result);
 
+    EL.qa.appendChild(EL.desc);
     EL.qa.appendChild(EL.pages);
     EL.qa.appendChild(EL.options);
 
@@ -151,6 +165,8 @@ export default class QA extends BaseSpecial {
     removeChildren(this.container);
     this.container.appendChild(EL.qa);
     this.makeNextQuestion();
+
+    this.params.share = this.params.share || {}; 
   }
 }
 

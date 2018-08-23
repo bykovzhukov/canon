@@ -31,10 +31,17 @@ export default {
             titleStyle: 'font-family: Impact; line-height: normal; margin-bottom: 15px;'
         }]
     }],
-    results: [
-        'Шрифты — это не ваше',
-        'Вам только в экспресс-дизайн.',
-        'У вас есть задатки дизайнера!',
-        'Дизайн спасёт мир.'
-    ]
+    results: [{
+        'level': 'Comic Sans',
+        'text': 'Сочетаю несочетаемое',
+    }, {
+        'level': 'Arial',
+        'text': 'Иногда хорош',
+    }, {
+        'level': 'Helvetica',
+        'text': 'Близко к идеалу',
+    }, {
+        'level': 'Akzidenz Grotesk',
+        'text': 'Задаю всему&nbsp;&nbsp;<span style="font-family: \'Dobrozrachniy\'; letter-spacing: 0.2em;">стиль<span>',
+    }]
 };

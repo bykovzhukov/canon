@@ -6,16 +6,13 @@
 // base.styl подключается только в том случае, когда спецпроект расположен на отдельной странице
 // @import 'base'
 
-$colors = {
-    white: #ffffff,
-    black: #000000
-}
 .Canon
     position relative
     min-height 540px
     padding 40px 20px 50px
     font-family 'Roboto', Tahoma
     font-weight 400
+    line-height normal
     text-size-adjust 100%
     background-color #000
     overflow hidden
@@ -28,7 +25,7 @@ $colors = {
         right 0
         width 100%
         height 90px
-        background-image url('images/bg.jpg')
+        background-image url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAgEAkACQAAD/2wCEAAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAf/CABEIALwA0AMBEQACEQEDEQH/xAAdAAEAAgMBAQEBAAAAAAAAAAAABgcDBAUBAggL/9oACAEBAAAAAP5/4WXANMAAAF19yhtEN+7qriwFiSOs+IGSdwAz4HdsPyoF/wBP8AvPFipZMJNVIWBLIPC9m1qp1vq5d+jcacbEA86Vm8+GcMT+Qw+HgAAAAAADJ8/IAOhOYtHyT7kMPduyaqJd3a0Asb5kFNpxsQDwmsijkLLY+atxpXyOWSqPazv8AAJBZtcRl0bmov4AAACwcUiqECyq3+X1MNqBgAExh/kpueNVTyvr9M0VGU+uL8x4wHSlkgiUO6Fr0wdHv44m3LvhVcgMtwVLqAAWzV+stTsUt8ZMb335AAC36u0Vs1T8APb0jtWHu1qCSxouyvooMmM694Q2qntrb9MgHU5Z7blR+E24HIJfalcQMAZLI7PapLmgN3c4zb3dmPASW0aJAZ8AT+Z6lMLK5sHABaEio7we5trnLZ5lcgz4AvXJR2uAWLy4cDr8gOnl5PyAAHQ//8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/aAAgBAhAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/9oACAEDEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP/EACkQAAIDAQAABQUAAgMBAAAAAAQFAQIDBgcQERIUABMVIDAhQBYlMlD/2gAIAQEAAQwA/XwwgTRweORjjrdhlXE87Gke2n+xwQ3LkaAFr9txXnQmqeQ00ZD85JBjI7RmeUfrnllp+qsDVoxCX4xab9JzvDZVDHP3zS79Py5HO7YWjapi/wDfl+Hq0Ely5KkBSsF8NGh8JxAiLkdEp/COTltbWvn+uO2o+tNsNL47beITQpISoNGGL085FJjKN5H3jDy5prumchnDiSdq5epuviimUbHLo/EIwIBUq5UeZ328lwnK89VWgZCDSw6hbmpfswMKzTDz6ym5HAqrrJtIfJqeLLKFIUXb6HeIqxBpJDPRrXBz5JeHfOoptQeAhG3hrUNUQWvZXPN/Xw958d002INzrsIH4kwW8zX3BGom71OOmf6ZiZ1yG+gytQSxjcJiNr+Ja6tLm4c/nR2WWQcTuYXpbYj6rb22rb0ifrHxNUk7C6s0No1YCcL1+l2dnECFbVzrrrXK865eXO92zQCfAjHE4Nl4jPDcbDiUGVY2ta9rWtabW+k52S1oAfsPBWUeKOl3eF/jWxRVOD5Xsczg2WRabpPxcuj7JtPuL/08P+iFRMScj7/ZDD5blFzOrbfqF2wHbPsOgc/IE90h/wDzscdiNKY4Zab7Wralpretq2/pkrY7Abs8hNrgeHpie+pqNqKPpPTIteea7A3918PNJyLt5pX44txxus5xZzsB4DNfnHecRM+vpEz9AHlrC8TgdrDk9V6OuQT9KWLkM08+X5A3pp30yIxEFZruBThlh/NMat/34TpsV+miNr9uyl5wLkFnP4YbYwHxAiac2jycaj69D5cgoCZhdNsQJc4p14iummdhxYoqHmZmZmZmZ8+GbrVLQiGsRUSQ/DhDeN9TSH+vWdhp0cDi4i1BW+fhWZWC2qvSfWjRZ4eIN98ttGbQza9NNddM8q4U8uNTAPXNQGG2uWTpXsmaGLdvWbeYXa9KvFqGMyvGBZhZ+9yTSNit/LnOhK5th80fOm9f58u1qmerz9LTXDohOAMNl0c599+hapT/AIuCVLRYP5KdjxmIhKzPXU3t+XKfhhuQRbUaaZ6ZXtnrS+en+un7yyJRkvXJhKk5+JHUU2+5YkbXPXvuebh6ZvufnUn933huwXxoQo0lqNatqWtS9bUv5ViJtWLW9tXPEtlch3wnNoJ1fJg80vWW+ffZt/cPjymfPVdK9qmbzExMxMTE/XHpQX7iF55G2GWy/WvRidSEX9lNUvkO9tpiXl+JcOlf4ZkSv+TiZH1Wtr2rSlbXvyABiZICE2KrJHXYN8Hpn5q06E+XJ/8ACsQiSOjt907QtCgTwzuvxVj66fd1119Ir/FSqKdG0Xhfa+Sn8PXZxuuLDKysU3sFfKRRPyYo5OXaM0zdiOeopNLfSphqqYhMcf8A3zjOrbhHSrXeKlealhKpkExjDMmXvaNHR4ZtfQGnTdXv01F8EBDja+S8mgRwZmmMEUxZ8731hhy1LqdO75dPz1AbryNo2/hhvsNtnuPrpjuv6S/ZpSecKKqvdnAlLS9wTcpxJ/qf4lUwDxA5tf8ACzLMKO3uSYRqSR5cOxUMaCcyw58UvRtxfG66l5CuMkxelYppekXppH1nlrtM1xy01t5VtNZi1ZmtrWte1r3ta1v9HwuBplVu839K5szrsmJp+nr7vLwyFzHo7fER6Y6W99739sV/jWtr2rWtZtZAsX8Mk0dPK/8AYdSsUOEGfXIx/hx5xEzMRETMkgHB1ysYGULX9F/UsVqVgjxrhYXz5+y9lw+yFUcJi3Z8V0SkXQ0oKsjfpGWts77Vy0tl5oGGCpwAxJH+Vgrcpu9szBMW1sI/6TmheeJ5vm6baZ+UenrHuiZqs67n1sCDc9zVvyHiyRX2JRY9Jt/CJ9P8x/idXbjcX4OzM/UTz9J/zPpP1wWubfn3/M3rSusxNZmtomLefAuBEz37x28DivrA3cs7rfb8Hz4UKDeoWVtHrTp+NJ6VxmZufkEu61RyigYfBOx1NZ/yxnKNsp3jS2DLhhS1lHXJlasBeSMwQ8Swc/DoVpzpHGEMrPFBOaolzoPs3abCTEi/wAYmqyalryLikMuhdt/8MWRJFPIEEtkVkEDhYgqETKzf8FXGt2Lzl3HPfaswwr9j9+a6Y3my/vYeuwnROOdL41rssIGzv/DEYkn7sjj77x+vhrcenTU+9elLlBh8HDR7sVVk67Foblx64F3XOXflzvI890S7KcXe47l/wTdEPob78Dgf6Epw9vDtUYOBFmXholYgZN9mIe4lLR7bTX9a2msxaszW2hROutd9iNttmbZi4IgpkVcrfyScEOIHk86M+wo/V9zLYaydXlpgr/YYfUskcTCPdt+qZ1ql8N8GOFMtSOE6xr0B7AdjfG1S6+0omv8AJR4lOV9MRzMR2I3WvEju4mqpTK/f9uft7XyS37fmGP4r8L8m341I8PQF3MX2zrre9tL30vabX/0VMzDVZMT6T//EADQQAAMAAgECBAQFAwMFAQAAAAECAwQREhMhAAUiMRAUIEEjMDJSYSRAUUJxgTNQY3KRlP/aAAgBAQANPwD6beW06Rsiv6VtJbyVXBB6s6esa7pNgfSSPEszJki/tWdnRR/wAB/c4ePSediWuG+d6sGnWs50BDyVx1kOMUaI0mQhDIxz3pR89UmuOLUYs4rkt1qwpRyKGaRmlu5DllPHLs1nnBOEkLfZV7n/ANmYlnbbuSzEn6cvIlHajZRGYdSpH7ZTD1c+wVCT2HhYrPHfGcTtWKehTkK0rrUAjTZFVFCd8re/jMUvh5qLxDgBWM6KGcLQKyspVmS0yHQgh5z+tQ7rxZJ1vOXIUs1agzxsdWU+tldqBW4ia8aFxRY5NLeYTnkNNGdjKnzYIbijOopGSPx4gEsFbHqpg765NC00tEsQApcToquQAC6t6V/SPpkwedZsyURh7MjqQykf5B8ZEHxmzqbFOm68ebRUCb5CfqSwKacK5RmUk/E+1jKnSPt7U48D7j7/AHHxVmiuKvLqW+YQxKRKK7Cx56npH23p4MCR4agxMNqTkpxK9TdBkVWq3+XgBR7zrjETUO/FDydcNMWr1cgtGWNjvjxDdzquQGZyo0EmBocXTXw81wZWyMjMxktG2QzBehS9g6z5W6i48hqa9NebCtJmsbh4ISTwjeaZEkDNtmCJUICSSePdidk/GcfLKZSR77w0xSmn4+6RyOiajXpZObaE21gGeSaZE7oiuugUu6Q+SXkSR01qGcA9NmAJ8Tx4STy9Kxq2RxppS+OP6iRM3I6pZZBZq3EkNy+DEEZWbykHQ/6ox4m1hx7qwRZMe3VHuMJWfJx+lNVosxyqslSlKSsibcTdqNTjxXizKPq8snKrQYEpbIszDHSg9mkBKtHQnTlERlabOPGRkDClT1nIAo3Rlanq6Bi5K84iQM5sfxX4abMx550ooNJE0esqzQeyp1Yu6IvpmjqiAKoA8Yt5ZEiRsc4urryH3UldMPuNjxSHSfKYQ470BpslUGXWKkchFuGwqrzH6xkUatqNoFnb37ABVAGgqqAqqAqgAAfBWDaPcHR3oj7g/f8AjxjbM8qTQy6Y9HAWj44tONJK4Hq4V58QAeZAPgQC1b5mWHTUlIV7Y2bMl+kAFZ5cVZFUdT9LeFo6yoV4GkwxCOU2eBddMV2eJOtnXxVmaMrs6PAuSzrOiEjpMxZzNkbTsSrLtgXBUnDRvmNH3Au7ET3++M50HuHHhiWZmJLMxOyzE7JJJ2Se5Pc/DFyZ2eB161U+68vTzT9c+Xp6irvtvwAZVkVR8xuev6pmBZQ0WAKwmxUzNFLu7Iyebg5GQ0aCxlj5tHYpdELOKYteN5kr1TEhdF2qppUUiQjIitRFeySV1RukljRZekDphQu1AY/R5jKSNchmWN8dnMGoFBIky1sjMFPFmRm0gdhC/wA3iYa3xg+0cUij0XJo9liwAKTiGtxHIICyHFx0xMd2VkNglK1e/BtMgd6lUDBW6aIWVWLKP+3UPGcoo1KOdE6SaBmY6BOlBOgfCnTKwKsCPsQdEH+D+bjOs75QX8JHYqAuyQW0XQOUDCfNOZXku/NQFxr2RCWfg03xBQjnJ6q3KDIynqgqD1Gl4b8fDs2t1xXZghbXbqTKtKo0PWhYAIy7+Ox1M3KV446jffgWXldx+yKuQdcygPLw/UGbDUh0Qqz4PwmztDmxcLOrO7Log6UlviASdDegPcn/AAB9z4gSZ0UK2uSlWVlcMjo6kqyOrKykgjw2R8taiT6fzUCciauRrmyt8vO0QxKzV6iXocE/HGdJ2tVXo5ZwW4xkvEUZVG251kBte5346FVlfHctKGWJkS7xM8TpioApNqZVEHNWIbjr6/MWZQbAGWPeqibCuwQcfIUKlOR4TYCh0pqfFaimFaNUFMfZ5LK7M6NNon9OQSJuvB+oKc0VKrtoe7SMaDKcjXdCy4wqwCo+QA0lCbUfDC8rLYGMjOHN6zyfxJrM7es3lIIOL93ICMxUeHHGgxnZ8lwfdTlMEZFP/hnJ/cM7KdeCSSSdkk9yST3JJ9z9GfhVwmuyGiy6jzYiiqrN0qqpm5CkAlC44BmXfUjiyeeTFR3Kh+isMdiDoOmRdt9tw1y3iNzjDkGd6BDNHoVVZoJzLJKU10gd9u+14/HKxZ5KKToE47mNQP5dMlSe++M9j2JEXbl5at2CI/usaZEoYwRBscv6illVdkM3Zno7pFC7JFGYsslajM7LMEIpdmcgAsxOz8TjXtNIlUpkVlxIiHYNw1M0sSFYlYsvp3yGNYqjka6sWAeFgPt1ZMj6BPEkrvYP0IvCQrHHu8lA0FnW8qUCqNBVLMqAAIF8P+qt6NRyO+lBYniq79KLpVHZQB2+NJNDIx6MUW0mKsAHAYo6Oqsj8W13UqVYj8xKmWSQCdY90aNWKju3TV+qFGyWmNAnXi6TNMXyzJlf5lpoqIzzjK1ouyKqPt4KSmyUcULYodeuzA5WUDoL1+JfZXRPJ7XoSx3QAAfGFlrCcZvZ3YHRTpzBZ0opM3UD1IxX7+JYshlYLEdakXUV6Q0eLZOJR6Lx7GqFlVmackZCVedFKOjD3DKwDKR9wQD/AHCczXOtZn+YdnZ+pWM5RoxUNwUHKYKiqq6Ua8ctnHfDiJa/bymqXA/nrFv58LJhPpiNkanHiOnkv0snELbJDIKGY36nIAP1oT1IgKmdABQ2jMHjkekg/hBankuscrtvCMVZWBVlZTplZToqykEEEAgjR+JYBm0W4gnu2h3Oh30O59vGfSMsXKwgxVq5HHoJRD+jrcgZUDvJxrdFY8fGSQMrFJQy4ibNW2OAiVSUrBYqaljblzUIUdB+fO2RPM8uVdWksT6eidnrVMuNjIBWZKIJc6DgwJBBGiCOxBB7gg+4+BxrWmMcotbVk0z0Q1EoqDpGtWPBjxkVGieQv5TTI82cUUSyEjjbxXebEF+cHlRacW6SYjbZC6BgzrjX5pO2RIN+GRTSxyn48eWNZTZBz+XYoHcQZeORBlKUVlDDkqvTpUXZSkmYsjqe7KVY+HYKqqCzMzHSqqjZZmJAAAJJOh4rRjj47lQ2MHRrrhI5Ym1JqlbMF2J+tE3OQY0bqSqu+jTFLMIHGH+iKqOCz/VNlZX3QMT8FyPwMZ55rKIKiFSi4w6VXpU0DixIRUTYVWJZ5gpjfKQhl1agLSx+inc5FAORm7bmOTWKCdCtKPTiPZebFtD+BvX5NUo81tTpK/SQ0dQxBHLgrMAddlPft4xaBcjIqFY07ciuGFYzvtdfjB+gm9lnZemY1D52ZdqVTIqAq0COjIa1YKA1wRCegkJMgHG+Gj+YfhPE/Nl3JWisqq9kTitLTLzodEOxBY+MTInXX70B1SZ/iky8z7dmPfx5ZgZqKC+nbE6L3xmOyPw1cPiED0pJJq36wD8cO6XEa7COV3r1AEo6k8pvxbp0VX4tx0fLqC2DCLmglbkrG1XZV69DxVDyRZiYKLMB6c8JbBqyZ2Nmt0uWgw3KYMgRMtQgsTz/AM/DFyoZDQZuK2EarQzLaOg3HWyrDv3VhsGJppx8wMHGdk5OXvi5HQBYKqrTIijk6RdB9Nk0or4d6rVukq7GQhCq6Kr6kefIOWHEgo+/yIuKSrJilJup2GR1IKkf5B8Vigx8jfCHmfRZaGT8QDKlQnG857DoWpJWQPjjHfhWZKtxJUMpDIWVlZWVlZWIZSCD3/OlFJJfLSW4AKBqGLFniWU9xSrurHZaB34odvWztRzr2G2J0qjsqjSqNBQAAPifmmTzAxx2fhquSWuWmtkZBuS2nYuV6aBRok4gByIUy51jHmi1VqRy6rfiUde88kIu+OuQK+EdlFJ8uFArEB05KrcG1yXkqtojag9vgqPRlmjOVnNSzuQoJCIoLOx9KqCSQPipDKykgqQdggjuCD3BHcHwxLMzEszMTslidkknuSTsn+yhMYc6HXFVVRlZhP8Agoi4x3+1mG+58ZeTa+j7otHJSf8AtNOKD+FHxw8Y46uRscVU5eZrY7FJyh7f6aEex7u7NxUAKvIk8VAAAA3oAADX2/JYhVVQSzMToKoGySSdADuT2HjLRUaaqHtNKgMnl8UZgrWbiXyWJVRxKs3TjzZaiWfiic5DRt8uXaUi00slmnsz7VjUUfTL3+JIAAGySewAA7kk+w8XDNBsnHtBbKuuRkaoooF5LspsDku/cb+jzAVDO6N1ojImI5HTZWUN1ZAL+IG4H1Lr2+jIjZbwyKCNaZFbcqDi3qotcdBBKyV1ReHPTKR4iAa1heNumpOubIj9XgDrk4QqoO3KjZH0TKrSoRjNC3ZQ7gcVLHsoJBP2+jFv1KRAUsRwZVpMPpTWLMtpBioNJqOafqGEYVxRktrIolRVKXBi4bGdGUKejUkJRd0JOhkVUvYrYRQC87VcUyj16u/SWSgTCBCWVxxUN8NjkAQpI33AYhgCR7EqwB76Pt4yHjA3zaz6nVqwTtkqMi9QzNrioxk9WwigBPBbNyGP3VVGPNP+HLU3/KD8kdwR9vGgPl6ZVnkVXRVSrOQyKQCqHaroaA0PoHv/AB9u/wDz4eVsiDaAL/MyEg7dtFsbIlBg7d9URQNT8KSCCNEEHRBH2IPYj6MnEtivVg5mjs8qyL8ASAXjw5lSqc9sVXkwbMs2Pw3wKFiSZggETL8jMaACFQOwH0Y1KZr/AMHFm1JH/wDQIj/Yk99aOLhygoVGtdytLWu5VmnKQPUCChd9BAxkQPUL8cgC8smQiJtzNWjNJSqK9MIiMW0aB1Ogw/KFENlkVWrS5DqCbMGVaFNhCwKhtEgjt4KF6YVyrZa8RuiSM0TlaXs+LRBXtudKlkQr5ks82bcUekjbExRIuVc6kt2pObqV5u/pAdn8HFrHM8usZYc+nQpRqdFz0l6bSVmfEq0QB61ViT4r5jm0xyP0mL5NGkV7AhShBUHuBoHv+SisopPiTxcaZWVwyMp7bVlI2AdbA8HX4PJY4+xoA/LQWUN9vfp73s72Tv4XJEpIVBbipdiWdlRVVFZmZ2VVUEkgDwK9EynaVEVwnUflZHaQE021Ty3PiysA6lfFm4TyYUFYGmuRkWAVp04gkLRE5hWMy4Ryv11IGXhM5Wd1HYOp0wndB/06hT+1wyEqfNLY96YquiZTZzZGH1uri8+U69PH52ZVCOEa6mhp1KfkQk17dGT16MU1zrXgrdOa7HJ20q/cj6nwspMbkQOWQTI8E2RtzEW0BskAgDx5rW0/LZUn0zPr1Na7QWd6qrFGyLjgeKTjMTN25eZ161phZgwjDIeyvxmAsqCbY2OwA7lrryYq5Pw4ucnEdYOJlWYAzxSJWrLiA5qmQy6YBum4KiRHUtAslYqzBFe0KAEKWYDcnsF3tyqjl+actuNceRfJs1MzJjQUKA0qplJNKeXDpzC6VfGYuHKCZMzKtFmMo2PScCiqBWYBdAH2db4nwpI/+HX0qQyspIKkHYII7gg9wR3B8IVK1tR6uCp5L6qFjoN3A9t/bws1krss0CzVmYIqSSc1HJ2b0qNliTsn4pKeWMfFZ0pNWCvPr5CA1Wh5AGWKnUDEBL8u3j8NKWyGamXlrFlZFJd6NOXNFY83pevFTR0DPI/VlXljxUnQatqLOYJ+23YDf2+rFa8ZJbkZmlvN6zHNUZGISdufFWBbiPUASRLFneCRikghFROncEuwbqJ+tm1rtrfdciy+2vajD2+3+35UkSY5A4+UJzUIqi8gZsQo7tSFHY92fe9qKNnWM4SN3fhxTjjsy1CFWbr0VKty48QAd/Uvm/lrd/btmRPf6vmPmflwqDdffvQL1DPl+J0i5n1AHC8gD4pj1x3FZ9SbTfi/ddr6kpOdEII9SAMGRnRqMzux92ZiWZj/ACSSf7IeYYZB/wAEZMyD4//EABQRAQAAAAAAAAAAAAAAAAAAAJD/2gAIAQIBAT8AHD//xAAUEQEAAAAAAAAAAAAAAAAAAACQ/9oACAEDAQE/ABw//9k=')
         background-size 104px 94px
 
     &-wrapper
@@ -47,6 +44,8 @@ $colors = {
     &__logo
         display block
         margin 0 auto
+        line-height 0
+        text-align center
         
     &__desc
         width 380px
@@ -145,18 +144,46 @@ $colors = {
         font-size 14px
     
     &__result
-        margin-top 42px
+        margin-top 46px
         text-align center
-    
+        
+        @media $mq.iphone6
+            margin-top 56px
+            
+        &--kern
+            margin-top 36px
+
     &__score
         color #FABF46
-        font-size 72px
+        font-size 58px
         font-weight 700
+        
+        @media $mq.iphone6
+            font-size 72px
+            
+    &__score-title
+        margin-top 5px
+        color #fff
+        font-size 24px
+        line-height 1.3em
     
     &__score-text
         margin-top 23px
         color #999
         font-size 18px
+        
+        &--white
+            margin-top 18px
+            color #fff
+            
+    &__share
+        display flex
+        justify-content center
+        align-items flex-start
+        margin-top 30px
+        
+        &--kern
+            margin-top 17px
         
     &__restart-btn
         position relative
@@ -182,6 +209,9 @@ $colors = {
         
         &:hover
             opacity .8
+            
+        &--kern
+            margin-top 43px
             
     &__string
         margin-top 20px
@@ -404,7 +434,7 @@ $colors = {
         
         @media $mq.not_mobile
             bottom 170px
-        
+
     &__next-btn
         position absolute
         z-index 1
@@ -429,7 +459,74 @@ $colors = {
             &:hover
                 color #EC3163
                 background-color #fff
+    
+    .likely
+        &--custom
+            display: flex
 
+        &__widget
+            flex-shrink: 0
+            display: flex
+            align-items: center
+            justify-content: center
+            cursor: pointer
+
+        &__counter
+            display: none
+
+        &__icon
+            svg
+                display: block
+
+    .likely
+
+        &__widget
+            min-width 58px
+            height 44px
+            color #808080
+            border 1px solid  #808080
+            background-color #000
+
+            &:not(:last-child)
+                margin-right 5px
+
+            &:hover
+                color #000
+                border-color #808080
+                background-color #808080
+
+            @media $mq.iphone6
+                &:not(:last-child)
+                    margin-right 10px
+
+            @media $mq.not_mobile
+                &--facebook
+                    padding: 0 15px 0 10px
+
+        &__button--facebook
+            display none
+
+            @media $mq.not_mobile
+                display block
+
+        &__icon
+            color currentColor
+            background-color transparent
+
+            & svg
+                width: 24px
+                height: @width
+                fill currentColor
+
+            &--vkontakte
+                & svg
+                    width: 28px
+                    height: @width
+
+            &--facebook
+
+                @media $mq.not_mobile
+                    margin-right 6px
 
 
 

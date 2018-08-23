@@ -1,5 +1,6 @@
 import BaseSpecial from './base';
 import { makeElement, removeChildren } from './lib/dom';
+import * as Share from './lib/share';
 import { shuffle } from './lib/array';
 import { animate, requestAnimate } from './lib/animate';
 import makeDraggable from './lib/drag';
@@ -26,9 +27,8 @@ export default class Kern extends BaseSpecial {
 
   createElements() {
     EL.kern = makeElement('div', CSS.main + '__kern');
-    EL.logo = makeElement('img', CSS.main + '__logo', {
-      src: 'images/va.jpg',
-      srcset: 'images/va@2x.jpg 2x'
+    EL.logo = makeElement('div', CSS.main + '__logo', {
+      innerHTML: Svg.game
     });
     EL.desc = makeElement('div', [CSS.main + '__desc', CSS.main + '__desc--kern'], {
       textContent: Data.description,
@@ -59,6 +59,7 @@ export default class Kern extends BaseSpecial {
     EL.result = makeElement('div', CSS.main + '__result');
     EL.rScore = makeElement('div', CSS.main + '__score');
     EL.rScoreText = makeElement('div', CSS.main + '__score-text');
+    EL.rShare = makeElement('div', CSS.main + '__share');
     EL.rRestartBtn = makeElement('div', CSS.main + '__restart-btn', {
       innerHTML: '<span>Пройти еще раз</span>' + Svg.refresh,
       data: {
@@ -68,6 +69,7 @@ export default class Kern extends BaseSpecial {
 
     EL.result.appendChild(EL.rScore);
     EL.result.appendChild(EL.rScoreText);
+    EL.result.appendChild(EL.rShare);
     EL.result.appendChild(EL.rRestartBtn);
 
     EL.kern.appendChild(EL.logo);
@@ -179,6 +181,7 @@ export default class Kern extends BaseSpecial {
 
     EL.kern.removeChild(EL.result);
 
+    EL.kern.appendChild(EL.desc);
     EL.kern.appendChild(EL.pages);
     EL.kern.appendChild(EL.string);
     EL.kern.appendChild(EL.notice);
@@ -200,6 +203,7 @@ export default class Kern extends BaseSpecial {
   }
 
   makeResult() {
+    EL.kern.removeChild(EL.desc);
     EL.kern.removeChild(EL.pages);
     EL.kern.removeChild(EL.string);
     EL.kern.removeChild(EL.compare);
@@ -207,29 +211,29 @@ export default class Kern extends BaseSpecial {
 
     let score = Math.round(this.results.reduce((a, b) => a + b, 0) / this.results.length);
 
-    // requestAnimate({
-    //   duration: 1000,
-    //   timing: timeFraction => timeFraction,
-    //   draw: progress => {
-    //     console.log(progress);
-
-    //     EL.rScore.textContent = score + '%';
-    //   }
-    // });
-
     requestAnimate({
       duration: score*10,
       timing: timeFraction => timeFraction,
       draw: progress => {
         let n = Math.ceil(score * progress);
         EL.rScore.textContent = n + '%';
+
+        if (progress === 1) {
+          EL.rScore.textContent = n + '% точности';
+        }
       }
     });
 
-    // EL.rScore.textContent = score + '%';
     EL.rScoreText.textContent = this.getResultText(score);
 
     EL.kern.appendChild(EL.result);
+
+    removeChildren(EL.rShare);
+    Share.make(EL.rShare, {
+      url: this.params.share.url + score,
+      title: this.params.share.title,
+      twitter: this.params.share.title
+    });
   }
 
   init() {
@@ -240,6 +244,8 @@ export default class Kern extends BaseSpecial {
     this.container.appendChild(EL.kern);
 
     this.makeNextQuestion();
+
+    this.params.share = this.params.share || {};
   }
 
 }
