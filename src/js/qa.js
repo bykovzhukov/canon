@@ -131,7 +131,7 @@ export default class QA extends BaseSpecial {
     EL.qa.removeChild(EL.pages);
     EL.qa.removeChild(EL.options);
 
-    EL.rScore.innerHTML = this.correctAnswers + '/' + Data.questions.length;
+    EL.rScore.innerHTML = this.correctAnswers + ' из ' + Data.questions.length;
     EL.rScoreTitle.innerHTML = 'Мой уровень:<br>' + Data.results[this.correctAnswers].level;
     EL.rScoreText.innerHTML = Data.results[this.correctAnswers].text;
 
